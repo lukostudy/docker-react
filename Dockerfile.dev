@@ -1,0 +1,15 @@
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+# the following copy is not neccessary in the dev environment
+# because all dev files are in the external volume mounted to /app
+# but it does not make problems and can be usefull in the future
+# while building the production images
+# so this is a kind of remainder left
+COPY . .
+
+CMD ["npm", "run", "start"]
