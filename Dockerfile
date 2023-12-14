@@ -19,6 +19,8 @@ FROM nginx
 # the following EXPOSE is just to communicate that the
 # container should be listening at port 80
 # this is information only - Travis uses that
+# but it looks like is not required when ports are specified
+# in docker-compose.yml which is read by AWS Beanstalk
 EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # we don't need to start up nginx because
