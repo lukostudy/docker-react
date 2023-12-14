@@ -16,6 +16,10 @@ RUN npm run build
 # 2:
 # next block starts here as we have a second FROM
 FROM nginx
+# the following EXPOSE is just to communicate that the
+# container should be listening at port 80
+# this is information only - Travis uses that
+EXPOSE 80
 COPY --from=builder /app/build /usr/share/nginx/html
 # we don't need to start up nginx because
 # the default command from nginx base image does that
