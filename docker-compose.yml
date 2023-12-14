@@ -3,22 +3,6 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     ports:
-      - "3000:3000"
-    volumes:
-      - /app/node_modules
-      - .:/app
-  # this is a container for testing
-  # it is spinned up together with the web (development) container
-  # insted od starting the dev web service, it runs tests by the default cmd
-  tests:
-    build:
-      context: .
-      dockerfile: Dockerfile.dev
-    volumes:
-      - /app/node_modules
-      - .:/app
-    # this command will replace a default command of a container
-    # it's like running a container with a command at the end
-    command: ["npm", "run", "test"] 
+      - '80:80'
